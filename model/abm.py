@@ -90,7 +90,7 @@ def simulation(run=0,n=100,generations=2000,TS=10,modify=True,combine=True,loss=
 				soc = 'combo'
 			else:
 				soc = 'inherit'
-			with open(dir_path+'\\output\\{}_loss{}_gens{}.csv'.format(soc,loss,generations),'a') as output:
+			with open(dir_path+'\\{}_loss{}_gens{}.csv'.format(soc,loss,generations),'a') as output:
 				output.write(str(run)+';'+str(gen)+';'+str(ts)+';'+str(loss)+';'+str(modify)+';'+str(combine)+';'+str(complex_max)+'\n')
 
 # run=0
