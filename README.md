@@ -13,17 +13,16 @@ The actual simulation runs reported in the paper were parallelized using the [mu
 
 Below is a simple version of the model for performing a single run:
 ```python
->>> import model *
->>> simulation(directory=True,run=0,n=100,generations=1000,tradeoff=0.5,e=0.05,combine=True)
+>>> import ABM *
+>>> simulation(run=0,n=100,generations=2000,local=True,combine=True,loss=0.5)
 ```
 The parameters correponds to the following:
-* `directory`: If `directory=True`, a single simulation will run and output a `.csv` in the current directory of model.py, else if `directory=False` then the output will print in your console.
 * `run`: The specific simulation run.
 * `n`: Number of individuals in a population. The default is `n=100`.
-* `generations`: Number of generations for a given run. The default is `generations=1000`.
-* `tradeoff`: Proportion with which individuals either optimize or repurpose. The default is `tradeoff=0.5`.  
-* `e`: The level of transmission error. This parameter takes a range of values from `0` to `1`. The default is `e=0.05`.
+* `generations`: Number of generations for a given run. The default is `generations=2000`.
+* `local`: Whether the ability to perform single-edit modifications to existing solutions is present (`True`) or absent (`False`). The default is `local=True`.
 * `combine`: Whether the ability to combine existing solutions is present (`True`) or absent (`False`). The default is `combine=True`.
+* `loss`: The level of information loss. This parameter takes a range of values from `0` to `1`. The default is `loss=0.5`.
 
 ## References
 Winters, J. (2020). Is the cultural evolution of technology cumulative or combinatorial? Repo. [Doi]()
