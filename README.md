@@ -14,12 +14,13 @@ The actual simulation runs reported in the paper were parallelized using the [mu
 Below is a simple version of the model for performing a single run:
 ```python
 >>> import ABM *
->>> simulation(run=0,n=100,generations=2000,local=True,combine=True,loss=0.5)
+>>> simulation(run=0,n=100,generations=2000,TS=10,local=True,combine=True,loss=0.5)
 ```
 The parameters correponds to the following:
-* `run`: The specific simulation run.
+* `run`: The specific simulation run. The default is `run=0`.
 * `n`: Number of individuals in a population. The default is `n=100`.
 * `generations`: Number of generations for a given run. The default is `generations=2000`.
+* `TS`: Number of timesteps per generation. The default is `TS=10`.
 * `local`: Whether the ability to perform single-edit modifications to existing solutions is present (`True`) or absent (`False`). The default is `local=True`.
 * `combine`: Whether the ability to combine existing solutions is present (`True`) or absent (`False`). The default is `combine=True`.
 * `loss`: The level of information loss. This parameter takes a range of values from `0` to `1`. The default is `loss=0.5`.
