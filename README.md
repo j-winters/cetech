@@ -1,6 +1,5 @@
 # Is the cultural evolution of technology cumulative or combinatorial?
 
-# fidelitycombo
 This repository contains data and code from [Winters (2020)](https://repo). It includes the Python code used for running the model, the data generated for Winters (2020), and the R code used for producing the graphs.
 
 The top-level folder structure is as follows:
@@ -27,7 +26,7 @@ The parameters correponds to the following:
 * `combine`: Whether the ability to combine existing solutions is present (`True`) or absent (`False`). The default is `combine=True`.
 
 ## References
-Winters, J. (2020). Re-evaluating transmission fidelity and combinatorial innovation as drivers of technological evolution. Repo. [Doi]()
+Winters, J. (2020). Is the cultural evolution of technology cumulative or combinatorial? Repo. [Doi]()
 
 License
 -------
