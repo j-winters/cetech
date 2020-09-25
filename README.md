@@ -13,7 +13,7 @@ The actual simulation runs reported in the paper were parallelized using the [mu
 
 Below is a simple version of the model for performing a single run:
 ```python
->>> import ABM *
+>>> import abm *
 >>> simulation(run=0,n=100,generations=2000,TS=10,local=True,combine=True,loss=0.5)
 ```
 The parameters correponds to the following:
