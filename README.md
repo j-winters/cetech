@@ -1,6 +1,6 @@
 # Is the cultural evolution of technology cumulative or combinatorial?
 
-This repository contains data and code from [Winters (2020)](https://repo). It includes the Python code used for running the model, the data generated for Winters (2020), and the R code used for producing the graphs.
+This repository contains data and code from [Winters (2020)](https://osf.io/preprints/socarxiv/aypnx). It includes the Python code used for running the model, the data generated for Winters (2020), and the R code used for producing the graphs.
 
 The top-level folder structure is as follows:
 
@@ -26,7 +26,7 @@ The parameters correponds to the following:
 * `loss`: The level of information loss. This parameter takes a range of values from `0` to `1`. The default is `loss=0.5`.
 
 ## References
-Winters, J. (2020). Is the cultural evolution of technology cumulative or combinatorial? Repo. [Doi]()
+Winters, J. (2020). Is the cultural evolution of technology cumulative or combinatorial? [https://doi.org/10.31235/osf.io/aypnx](https://doi.org/10.31235/osf.io/aypnx)
 
 License
 -------
