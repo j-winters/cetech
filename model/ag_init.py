@@ -15,4 +15,4 @@ def init(n,difficulty=2):
 	p_initial = generate_binary(difficulty)
 	positions = local_space(p_initial,agents)
 	memory = agent_generator(agents,dict())
-	return prob,agents,p_initial,positions,memory
+	return prob,agents,positions,memory

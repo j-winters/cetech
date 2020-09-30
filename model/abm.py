@@ -11,7 +11,7 @@ from procedures import *
 from ag_init import *
 
 def simulation(run=0,n=100,generations=2000,TS=10,modify=True,combine=True,loss=0.5):
-	prob,agents,p_initial,positions,memory = init(n=n,difficulty=2)
+	prob,agents,positions,memory = init(n=n,difficulty=2)
 	for gen in range(0,generations):
 		for ts in range(0,TS):
 			random.shuffle(agents)
@@ -90,15 +90,16 @@ def simulation(run=0,n=100,generations=2000,TS=10,modify=True,combine=True,loss=
 				soc = 'combo'
 			else:
 				soc = 'inherit'
-			with open(dir_path+'\\{}_loss{}_gens{}.csv'.format(soc,loss,generations),'a') as output:
+			with open(dir_path+'\\output\\{}_loss{}_gens{}.csv'.format(soc,loss,generations),'a') as output:
 				output.write(str(run)+';'+str(gen)+';'+str(ts)+';'+str(loss)+';'+str(modify)+';'+str(combine)+';'+str(complex_max)+'\n')
 
 # run=0
-# n=100
+# n=25
 # generations=2000
 # TS=10
 # modify=True
 # combine=True
-# loss=0.5
+# loss=0.9
 
-# simulation(run=run,n=n,generations=generations,TS=TS,modify=modify,combine=combine,loss=loss)
+# for r in range(1,10):
+# 	simulation(run=r,n=n,generations=generations,TS=TS,modify=modify,combine=combine,loss=loss)
