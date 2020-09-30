@@ -31,10 +31,10 @@ cc9 <- fread("combo_local_loss1.0_gens2000.csv")
 cc <- rbind(cc1,cc2,cc3,cc4,cc5,cc6,cc7,cc8,cc9)
 rm(cc1,cc2,cc3,cc4,cc5,cc6,cc7,cc8,cc9)
 colnames(cc) <- c("run","gen","ts","loss","modification","combination","complex_max")
-cc$condition <- ifelse(cc$modification==TRUE & cc$combination==TRUE,"Combination and Cumulative",ifelse(cc$modification==FALSE & cc$combination==TRUE,"Combination",ifelse(cc$modification==TRUE & cc$combination==FALSE,"Cumulative","NA") ) )
+cc <- cc %>% mutate(condition=case_when(modification==TRUE & combination==TRUE ~ "Combination and Cumulative",modification==FALSE & combination==TRUE ~ "Combination",modification==TRUE & combination==FALSE ~ "Cumulative"))
 
 #example plot filtered by run 1
-ggplot(subset(cc, run==1 & ts==9 & gen %in% seq(0,2000,by=1)), aes(x = gen, y = complex_max, colour=as.factor(loss) )) +
+run1 <- ggplot(subset(cc, run==1 & ts==9 & gen %in% seq(0,2000,by=1)), aes(x = gen, y = complex_max, colour=as.factor(loss) )) +
   facet_wrap(vars(condition)) +
   stat_summary(fun = mean, geom="step", size=1) +
   ylab("Complexity") +
@@ -42,3 +42,18 @@ ggplot(subset(cc, run==1 & ts==9 & gen %in% seq(0,2000,by=1)), aes(x = gen, y = 
   theme_hc() + scale_colour_colorblind() +
   theme(axis.text=element_text(size=14), axis.title=element_text(size=16,face="bold"),
         legend.title = element_text(size = 14, face="bold"), legend.text = element_text(size = 12))
+
+#Example of how to export graph to powerpoint
+library(here)
+library(rvg)
+library(officer)
+
+run1_dml <- rvg::dml(ggobj = run1)
+
+officer::read_pptx() %>%
+  officer::add_slide() %>%
+  officer::ph_with(run1_dml, 
+                   ph_location(width = 9*2, height = 4.95*2)) %>%
+  base::print(
+    target = here::here("run1_out.pptx")
+  )
