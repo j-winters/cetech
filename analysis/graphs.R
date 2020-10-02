@@ -9,7 +9,7 @@ cc <- fread("run0.csv")
 
 ggplot(subset(cc, ts==9 & gen %in% seq(0,2000,by=1)), aes(x = gen, y = complex_max, colour=as.factor(loss) )) +
   facet_wrap(vars(condition)) +
-  stat_summary(fun = mean, geom="step", size=1) +
+  geom_step(size=1) +
   ylab("Problem Complexity") +
   xlab("Generations") +
   theme_hc() + scale_colour_colorblind() +
