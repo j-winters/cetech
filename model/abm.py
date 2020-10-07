@@ -24,36 +24,29 @@ def simulation(run=0,n=100,generations=2000,TS=10,modify=True,combine=True,loss=
 						sol_space = generate_binary(sol_len)
 						sol_choice = [random.choice(sol_space),random.choice(sol_space),random.choice(sol_space),random.choice(sol_space)]
 						memory.update({agent:sol_choice})
-
 			for agent in agents:
 				problem = positions[agent]
 				current = sorted(memory[agent],key=lambda x: editdistance.eval(x,problem))[0]
-				fitness = {}
-
 				#Combination and Modification
 				if combine == True and modify == True:
 					ag_loc = local(sol=current,prob=problem)
 					ag_com = combination(agent=agent,memory=memory,problem=problem)
 					sol_pool = [current,ag_loc,ag_com]
 					ag_sols = sorted(sol_pool, key=lambda x: editdistance.eval(x,problem))
-					fitness.update({'stored':editdistance.eval(str(current),str(problem)),'local':editdistance.eval(str(ag_loc),str(problem)),'combination':editdistance.eval(str(ag_com),str(problem))})
 				#Modification
 				elif combine == False and modify == True:
 					ag_loc = local(sol=current,prob=problem)
 					sol_pool = [current,ag_loc]
 					ag_sols = sorted(sol_pool, key=lambda x: editdistance.eval(x,problem))
-					fitness.update({'stored':editdistance.eval(str(current),str(problem)),'local':editdistance.eval(str(ag_loc),str(problem))})
 				#Combination
 				elif combine == True and modify == False:
 					ag_com = combination(agent=agent,memory=memory,problem=problem)
 					sol_pool = [current,ag_com]
 					ag_sols = sorted(sol_pool, key=lambda x: editdistance.eval(x,problem))
-					fitness.update({'stored':editdistance.eval(str(current),str(problem)),'combination':editdistance.eval(str(ag_com),str(problem))})
 				#Inheritance only
 				else:
 					sol_pool = [current]
 					ag_sols = sorted(sol_pool, key=lambda x: editdistance.eval(x,problem))
-					fitness.update({'stored':editdistance.eval(str(current),str(problem))})
 
 				if ag_sols[0] not in memory[agent]:
 					sol_list = sorted(memory[agent],key=lambda x: editdistance.eval(x,problem))
@@ -73,7 +66,7 @@ def simulation(run=0,n=100,generations=2000,TS=10,modify=True,combine=True,loss=
 						loc = positions[agent]
 
 			prob_list = [len(positions[ag]) for ag in agents]
-			complexity = sum(prob_list) / len(prob_list)
+			complexity_ave = sum(prob_list) / len(prob_list)
 			complex_min = min(prob_list)
 			complex_max = max(prob_list)
 
