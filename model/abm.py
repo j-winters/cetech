@@ -86,13 +86,13 @@ def simulation(run=0,n=100,generations=2000,TS=10,modify=True,combine=True,loss=
 			with open(dir_path+'\\output\\{}_loss{}_gens{}.csv'.format(soc,loss,generations),'a') as output:
 				output.write(str(run)+';'+str(gen)+';'+str(ts)+';'+str(loss)+';'+str(modify)+';'+str(combine)+';'+str(complex_max)+'\n')
 
+### Example Run
 # run=0
-# n=25
+# n=100
 # generations=2000
 # TS=10
 # modify=True
 # combine=True
-# loss=0.9
+# loss=0.5
 
-# for r in range(1,10):
-# 	simulation(run=r,n=n,generations=generations,TS=TS,modify=modify,combine=combine,loss=loss)
+# simulation(run=run,n=n,generations=generations,TS=TS,modify=modify,combine=combine,loss=loss)
